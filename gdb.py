@@ -90,7 +90,6 @@ class GetDetailBook:
 			print('traceback.print_exc():{}'.format(traceback.print_exc()))
 			print('traceback.format_exc():\n{}'.format(traceback.format_exc()))
 		finally:
-			log("---获取书籍详情页url结束---")
 			driver.quit()
 
 	time.sleep(2)   # 休眠5秒，防止操作过快
@@ -257,11 +256,9 @@ def log(msg):
 gdb = GetDetailBook('9789867761361')
 log("---获取书籍详情页url开始---")
 gdb.gdbu()
-log("---测试开始---")
-gdb.test()
-log("---测试结束---")
+log("---获取书籍详情页url结束---")
 log("---获取书籍详情页信息开始---")
-gdb.gdbi()
+gdb.test()
 log("---获取书籍详情页信息结束---")
 js = json.dumps(result, ensure_ascii=False, sort_keys=True, indent=4, separators=(',', ': '))
 log(js)
