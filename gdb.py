@@ -8,19 +8,17 @@
 import json
 import re
 import time
-import traceback
-from pyvirtualdisplay import Display
 import requests
 from bs4 import BeautifulSoup as bs
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.ui import WebDriverWait
-from bookspider.settings import USER_AGENT
 from lxml import html
 
 start = time.perf_counter()
 etree = html.etree
+USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36'
 headers = {'User_Agent': USER_AGENT, 'Connection': 'close'}
 search_rooturl = "https://book.douban.com/subject_search?search_text=&cat=1001"
 result = {
@@ -87,8 +85,6 @@ class GetDetailBook:
 			print('str(e):\t\t{}'.format(str(e)))
 			print('repr(e):\t{}'.format(repr(e)))
 			print('e.message:\t{}'.format(e.args))
-			print('traceback.print_exc():{}'.format(traceback.print_exc()))
-			print('traceback.format_exc():\n{}'.format(traceback.format_exc()))
 		finally:
 			driver.quit()
 
@@ -253,7 +249,7 @@ def log(msg):
 	print(u'{}: {}'.format(time.strftime('%Y.%m.%d_%H.%M.%S'), msg))
 
 
-gdb = GetDetailBook('9789867761361')
+gdb = GetDetailBook('9787540493141')
 log("---获取书籍详情页url开始---")
 gdb.gdbu()
 log("---获取书籍详情页url结束---")
